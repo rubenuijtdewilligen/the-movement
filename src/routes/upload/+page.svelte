@@ -27,7 +27,7 @@
         case 'success':
           await invalidateAll();
           formElement.reset();
-          toast.success('Track geüploadet.', { duration: 5000 });
+          toast.success('Track geüpload.', { duration: 5000 });
           break;
         case 'error':
           toast.error('Er is iets misgegaan.', { duration: 5000 });
