@@ -30,19 +30,26 @@
           </div>
         </div>
         <ul class="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-          {#if data.user?.role === 'admin'}
-            <div class="divider mt-0 mb-1">Artiest</div>
-          {/if}
+          <div class="divider mt-0 mb-1">Artiest</div>
           <li>
             <a href="/upload"> Track uploaden </a>
-            <a href="/settings"> Instellingen </a>
           </li>
+
           {#if data.user?.role === 'admin'}
             <div class="divider my-1">Admin</div>
             <li><a href="/admin/new-tracks">Nieuwe tracks</a></li>
             <li><a href="/admin/tracks">Bestaande tracks</a></li>
             <li><a href="/admin/artists">Artiesten</a></li>
           {/if}
+
+          <div class="divider mt-0 mb-1">Account</div>
+
+          <li><a href="/settings"> Instellingen </a></li>
+          <li>
+            <form action="/logout" method="POST">
+              <button class="hover:cursor-pointer"> Uitloggen </button>
+            </form>
+          </li>
         </ul>
       </div>
     {/if}
