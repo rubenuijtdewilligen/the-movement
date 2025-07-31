@@ -1,8 +1,11 @@
 <script>
   import '../app.css';
   import { getFileURL } from '$lib/util.js';
+  import { page } from '$app/stores';
 
   export let data;
+
+  $: currentPath = $page.url.pathname;
 </script>
 
 <div class="navbar bg-base-200 md:px-32 p-4 mb-4">
@@ -11,7 +14,9 @@
   </div>
   <div class="flex gap-2">
     {#if !data.user}
-      <a href="/login" class="link">Inloggen als artiest</a>
+      {#if currentPath != '/login'}
+        <a href="/login" class="link">Inloggen als artiest</a>
+      {/if}
     {:else}
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="avatar hover:cursor-pointer">
