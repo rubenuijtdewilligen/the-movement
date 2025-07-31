@@ -2,11 +2,14 @@
   import '../app.css';
   import { getFileURL } from '$lib/util.js';
   import { page } from '$app/stores';
+  import { Toaster } from 'svelte-french-toast';
 
   export let data;
 
   $: currentPath = $page.url.pathname;
 </script>
+
+<Toaster />
 
 <div class="navbar bg-base-200 md:px-32 p-4 mb-4">
   <div class="flex-1">
