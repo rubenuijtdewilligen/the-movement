@@ -124,7 +124,9 @@
   <progress class="progress progress-primary mb-4 w-full" value={progress} max="100"></progress>
 {/if}
 
-<p class="my-2">Beweeg je muis over een titel om deze te lezen als hij deels wegvalt.</p>
+<p class="my-2 hidden md:flex">
+  Beweeg je muis over een titel om deze te lezen als hij deels wegvalt.
+</p>
 
 {#if data.tracksGroupedByArtist.length > 0}
   {#each data.tracksGroupedByArtist as artist}
@@ -139,19 +141,20 @@
         {/if}
         <h3 class="text-2xl font-bold">{artist.artistName}</h3>
       </div>
-      {#each artist.tracks as track}<button
+      {#each artist.tracks as track}
+        <button
           on:keydown={(e) => handleKeydown(e, track.id)}
           tabindex="0"
-          class="bg-white p-2 rounded-sm grid grid-cols-[minmax(0,1fr)_510px_auto] items-center gap-4 mt-2 hover:bg-gray-100 transition-colors w-full"
+          class="bg-white p-2 rounded-sm space-y-4 mt-2 hover:bg-gray-100 transition-colors w-full"
         >
-          <h3 class="font-semibold text-left truncate" title={track.title}>
+          <h3 class="font-semibold text-lg text-left" title={track.title}>
             {track.title}
           </h3>
 
           <div bind:this={waveformContainers[track.id]} class="h-[40px] w-full"></div>
 
           <a
-            class="btn btn-primary whitespace-nowrap"
+            class="btn btn-primary whitespace-nowrap w-full"
             href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}`}
           >
             Downloaden
