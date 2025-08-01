@@ -49,7 +49,6 @@
   }
 
   async function downloadAllTracks() {
-    console.log('Reading chunk...');
     isDownloading = true;
     progress = 0;
 

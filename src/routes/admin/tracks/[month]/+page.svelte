@@ -13,7 +13,6 @@
 
   onMount(() => {
     data.tracks.forEach((track) => {
-      console.log(track);
       const container = waveformContainers[track.id];
       if (container) {
         const width = container.offsetWidth || 1000;
