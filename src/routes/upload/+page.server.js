@@ -18,8 +18,6 @@ export const actions = {
 
     if (formData.artistWithoutAccount?.length > 0) {
       try {
-        console.log(formData.artistWithoutAccount, 'is the artist');
-
         await locals.pb.collection('tracks').create({
           title: formData.title,
           artist: null,
@@ -36,7 +34,6 @@ export const actions = {
     } else {
       try {
         const artistRecord = await locals.pb.collection('users').getOne(formData.artist);
-        console.log(artistRecord.stageName, 'is the artist');
 
         await locals.pb.collection('tracks').create({
           title: formData.title,
