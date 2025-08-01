@@ -15,7 +15,7 @@ export const load = async ({ url, locals }) => {
     const escaped = query.replace(/"/g, '\\"');
 
     const tracks = await locals.pb.collection('tracks').getFullList({
-      filter: `title~"${escaped}" || artist.stageName~"${escaped}" || artistName~"${escaped}"`,
+      filter: `(title~"${escaped}" || artist.stageName~"${escaped}" || artistName~"${escaped}") && releaseMonth != null`,
       expand: 'artist'
     });
 
