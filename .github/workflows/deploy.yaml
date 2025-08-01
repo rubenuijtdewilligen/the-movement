@@ -10,22 +10,9 @@ jobs:
   deploy-to-caprover:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Tar files
-        uses: a7ul/tar-action@v1.1.0
-        with:
-          command: c
-          cwd: './'
-          files: |
-            ./
-          outPath: deploy.tar
 
       - name: Deploy to CapRover
         uses: caprover/deploy-from-github@v1.0.1
