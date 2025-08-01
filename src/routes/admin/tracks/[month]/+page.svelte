@@ -117,7 +117,7 @@
         <div
           tabindex="0"
           on:keydown={(e) => handleKeydown(e, track.id)}
-          class="bg-white p-2 rounded-sm grid grid-cols-[minmax(0,1fr)_minmax(150px,300px)_auto_auto_auto] items-center gap-4 mt-2 hover:bg-gray-100 transition-colors w-full"
+          class="bg-white p-2 rounded-sm space-y-4 mt-2 hover:bg-gray-100 transition-colors w-full"
         >
           <h3 class="font-semibold text-left truncate" title={track.title}>
             {track.title}
@@ -125,96 +125,99 @@
 
           <div bind:this={waveformContainers[track.id]} class="h-[40px] w-full"></div>
 
-          <!-- svelte-ignore a11y_click_events_have_key_events -->
-          <div
-            class="btn btn-secondary text-white"
-            on:click={() => document.getElementById(`move-${track.id}`).showModal()}
-          >
-            Verplaatsen
-          </div>
-
-          <dialog id={`move-${track.id}`} class="modal">
-            <div class="modal-box">
-              <h3 class="text-lg font-bold">Track verplaatsen: {track.title}</h3>
-
-              <p class="mt-2 -mb-2">
-                De artiest geeft de voorkeur aan release in de maand {track.preferredReleaseMonth}.
-              </p>
-
-              <form
-                action="?/moveTrack"
-                method="post"
-                class="space-y-4"
-                use:enhance={submitMoveTrack}
-              >
-                <input type="hidden" name="trackId" value={track.id} />
-
-                <label for="releaseMonth" class="block mt-4 mb-1 font-medium">
-                  Naar welke maand wil je deze track verplaatsen?
-                </label>
-                <input
-                  type="text"
-                  name="releaseMonth"
-                  class="input input-bordered w-full"
-                  placeholder="Maand (yyyy-mm, bijvoorbeeld: 2025-08)"
-                  required
-                />
-
-                <button type="submit" class="btn btn-primary text-white -mt-2">Verplaatsen</button>
-              </form>
-
-              <div class="modal-action">
-                <form method="dialog">
-                  <button class="btn btn-error text-white">Sluiten</button>
-                </form>
-              </div>
+          <div class="grid grid-cols-3 gap-2">
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <div
+              class="btn btn-secondary text-white w-full"
+              on:click={() => document.getElementById(`move-${track.id}`).showModal()}
+            >
+              Verplaatsen
             </div>
-          </dialog>
 
-          <!-- svelte-ignore a11y_click_events_have_key_events -->
-          <div
-            class="btn btn-error text-white -ml-2"
-            on:click={() => document.getElementById(`delete-${track.id}`).showModal()}
-          >
-            Verwijderen
-          </div>
+            <dialog id={`move-${track.id}`} class="modal">
+              <div class="modal-box">
+                <h3 class="text-lg font-bold">Track verplaatsen: {track.title}</h3>
 
-          <dialog id={`delete-${track.id}`} class="modal">
-            <div class="modal-box">
-              <h3 class="text-lg font-bold">Track verwijderen: {track.title}</h3>
+                <p class="mt-2 -mb-2">
+                  De artiest geeft de voorkeur aan release in de maand {track.preferredReleaseMonth}.
+                </p>
 
-              <p class="mt-2">Weet je zeker dat je deze track wilt verwijderen?</p>
-              <p class="mb-4">
-                <b>Dit kan niet ongedaan gemaakt worden!</b>
-              </p>
+                <form
+                  action="?/moveTrack"
+                  method="post"
+                  class="space-y-4"
+                  use:enhance={submitMoveTrack}
+                >
+                  <input type="hidden" name="trackId" value={track.id} />
 
-              <form
-                action="?/deleteTrack"
-                method="post"
-                class="space-y-4"
-                use:enhance={submitDeleteTrack}
-              >
-                <input type="hidden" name="trackId" value={track.id} />
+                  <label for="releaseMonth" class="block mt-4 mb-1 font-medium">
+                    Naar welke maand wil je deze track verplaatsen?
+                  </label>
+                  <input
+                    type="text"
+                    name="releaseMonth"
+                    class="input input-bordered w-full"
+                    placeholder="Maand (yyyy-mm, bijvoorbeeld: 2025-08)"
+                    required
+                  />
 
-                <button type="submit" class="btn btn-error text-white">
-                  Ja, ik wil deze track verwijderen
-                </button>
-              </form>
-
-              <div class="modal-action">
-                <form method="dialog">
-                  <button class="btn btn-secondary text-white">Nee, annuleren!</button>
+                  <button type="submit" class="btn btn-primary text-white -mt-2">Verplaatsen</button
+                  >
                 </form>
-              </div>
-            </div>
-          </dialog>
 
-          <a
-            class="btn btn-primary whitespace-nowrap -ml-2"
-            href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}`}
-          >
-            Downloaden
-          </a>
+                <div class="modal-action">
+                  <form method="dialog">
+                    <button class="btn btn-error text-white">Sluiten</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <div
+              class="btn btn-error text-white w-full"
+              on:click={() => document.getElementById(`delete-${track.id}`).showModal()}
+            >
+              Verwijderen
+            </div>
+
+            <dialog id={`delete-${track.id}`} class="modal">
+              <div class="modal-box">
+                <h3 class="text-lg font-bold">Track verwijderen: {track.title}</h3>
+
+                <p class="mt-2">Weet je zeker dat je deze track wilt verwijderen?</p>
+                <p class="mb-4">
+                  <b>Dit kan niet ongedaan gemaakt worden!</b>
+                </p>
+
+                <form
+                  action="?/deleteTrack"
+                  method="post"
+                  class="space-y-4"
+                  use:enhance={submitDeleteTrack}
+                >
+                  <input type="hidden" name="trackId" value={track.id} />
+
+                  <button type="submit" class="btn btn-error text-white">
+                    Ja, ik wil deze track verwijderen
+                  </button>
+                </form>
+
+                <div class="modal-action">
+                  <form method="dialog">
+                    <button class="btn btn-secondary text-white">Nee, annuleren!</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+
+            <a
+              class="btn btn-primary whitespace-nowrap w-full"
+              href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}`}
+            >
+              Downloaden
+            </a>
+          </div>
         </div>
       {/each}
     </div>
