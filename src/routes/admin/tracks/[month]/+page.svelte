@@ -119,7 +119,7 @@
           on:keydown={(e) => handleKeydown(e, track.id)}
           class="bg-white p-2 rounded-sm space-y-4 mt-2 hover:bg-gray-100 transition-colors w-full"
         >
-          <h3 class="font-semibold text-left truncate" title={track.title}>
+          <h3 class="text-lg font-semibold" title={track.title}>
             {track.title}
           </h3>
 
