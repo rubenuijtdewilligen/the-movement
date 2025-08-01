@@ -1,3 +1,5 @@
+import { error } from '@sveltejs/kit';
+
 export const load = async ({ locals }) => {
   const artistsRecords = await locals.pb.collection('users').getFullList({ sort: 'stageName' });
 
@@ -22,4 +24,19 @@ export const load = async ({ locals }) => {
   });
 
   return { artists, invites };
+};
+
+export const actions = {
+  deleteInvite: async ({ request, locals }) => {
+    const formData = await Object.fromEntries(await request.formData());
+
+    try {
+      await locals.pb.collection('invites').delete(formData.id);
+
+      return { success: true };
+    } catch (err) {
+      console.error('Error in /admin/artists/invite:', err);
+      throw error(500, 'Er is iets misgegaan.');
+    }
+  }
 };
