@@ -3,7 +3,6 @@ name: Deploy to CapRover
 on:
   push:
     branches: ['main']
-
   pull_request:
     branches: ['main']
 
@@ -30,7 +29,7 @@ jobs:
 
       - name: Deploy to CapRover
         uses: caprover/deploy-from-github@v1.0.1
-        with:
-          server: 'c.rbnu.nl'
-          app: 'the-movement'
-          token: '${{ secrets.APP_TOKEN }}'
+        env:
+          SERVER: 'c.rbnu.nl'
+          APP: 'the-movement'
+          TOKEN: '${{ secrets.APP_TOKEN }}'
