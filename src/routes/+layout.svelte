@@ -17,7 +17,7 @@
   </div>
   <div class="flex gap-2">
     {#if !data.user}
-      {#if currentPath != '/login'}
+      {#if !(currentPath === '/login' || currentPath.startsWith('/invite'))}
         <a href="/login" class="link">Inloggen als artiest</a>
       {/if}
     {:else}
