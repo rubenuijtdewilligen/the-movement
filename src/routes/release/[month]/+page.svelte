@@ -123,11 +123,11 @@
   <progress class="progress progress-primary mb-4 w-full" value={progress} max="100"></progress>
 {/if}
 
-<p class="my-2 hidden md:flex">
-  Beweeg je muis over een titel om deze te lezen als hij deels wegvalt.
-</p>
-
 {#if data.tracksGroupedByArtist.length > 0}
+  <p class="my-2 hidden md:flex">
+    Beweeg je muis over een titel om deze te lezen als hij deels wegvalt.
+  </p>
+
   {#each data.tracksGroupedByArtist as artist}
     <div class="border-base-300 bg-base-200 rounded-sm p-4 mb-4">
       <div class="flex flex-row items-center space-x-2 mb-4">
@@ -163,7 +163,7 @@
     </div>
   {/each}
 {:else}
-  <p class="mt-2">Geen tracks in deze pack.</p>
+  <p class="mt-2">Er zijn deze maand nog geen tracks uitgekomen. Houd je inbox in de gaten!</p>
 {/if}
 
 <style>
