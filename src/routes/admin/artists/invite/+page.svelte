@@ -78,7 +78,7 @@
     />
 
     <button class="btn btn-primary w-full" type="submit" disabled={loading}>
-      Uitnodigingscode maken
+      Activatielink maken
     </button>
   </form>
 </div>

@@ -89,7 +89,11 @@
         {#each data.invites as artist}
           <tr>
             <td>{artist.stageName}</td>
-            <td><a href="/invite/{artist.id}" class="link link-primary">/invite/{artist.id}</a></td>
+            <td
+              ><a href="/invite/{artist.id}" class="link link-primary" target="_blank"
+                >/invite/{artist.id}</a
+              ></td
+            >
             <td>
               <form action="?/deleteInvite" method="POST" use:enhance={submitDeleteInvite}>
                 <input type="hidden" name="id" value={artist.id} />
