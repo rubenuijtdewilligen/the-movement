@@ -295,7 +295,7 @@
         "hidden": false,
         "id": "file376926767",
         "maxSelect": 1,
-        "maxSize": 0,
+        "maxSize": 52428800,
         "mimeTypes": [],
         "name": "avatar",
         "presentable": false,
