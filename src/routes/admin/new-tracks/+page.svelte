@@ -12,9 +12,6 @@
   let isDownloading = false;
   let progress = 0;
 
-  let loading;
-  $: loading = false;
-
   onMount(async () => {
     await tick();
 
@@ -58,7 +55,6 @@
   const submitAcceptTrack = ({ formElement }) => {
     const dialog = formElement.closest('dialog');
 
-    loading = true;
     async ({ result }) => {
       switch (result.type) {
         case 'success':
@@ -70,8 +66,6 @@
         default:
           await applyAction(result);
       }
-
-      loading = false;
     };
 
     if (dialog) dialog.close();
@@ -153,12 +147,9 @@
                     placeholder="Release maand (yyyy-mm, bijvoorbeeld: 2025-08)"
                     value={track.preferredReleaseMonth}
                     required
-                    disabled={loading}
                   />
 
-                  <button type="submit" class="btn btn-success text-white -mt-2" disabled={loading}
-                    >Accepteren</button
-                  >
+                  <button type="submit" class="btn btn-success text-white -mt-2">Accepteren</button>
                 </form>
 
                 <div class="modal-action">
