@@ -179,5 +179,5 @@
     {/each}
   </div>
 {:else}
-  <p class="mt-8">Er zijn geen nieuwe nummers geüpload door artiesten. Kom later terug.</p>
+  <p class="mt-8">Er zijn geen nieuwe tracks geüpload door artiesten. Kom later terug.</p>
 {/if}

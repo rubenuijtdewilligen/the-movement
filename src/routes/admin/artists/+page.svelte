@@ -35,7 +35,7 @@
 <p class="mb-4">
   Artiesten waarvan door een admin handmatig de naam aan een track toegevoegd is, staan hier niet
   bij, omdat zij geen account hebben. <br /> Ook wanneer een artiest later een account gekregen heeft,
-  tellen tracks van voordat de artiest een account had niet mee in "Nummers geüpload".
+  tellen tracks van voordat de artiest een account had niet mee in "Tracks geüpload".
 </p>
 
 <div class="overflow-x-auto">
@@ -44,7 +44,7 @@
       <tr>
         <th>Artiestennaam</th>
         <th>Naam</th>
-        <th>Nummers geüpload</th>
+        <th>Tracks geüpload</th>
         <th>Acties</th>
       </tr>
     </thead>
