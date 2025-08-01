@@ -59,6 +59,6 @@
   </div>
 </div>
 
-<div class="md:px-32">
+<div class="md:px-32 px-2">
   <slot />
 </div>
