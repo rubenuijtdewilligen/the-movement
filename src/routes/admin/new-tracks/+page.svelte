@@ -79,7 +79,7 @@
   };
 </script>
 
-{#if data.newTracks}
+{#if data.newTracks.length > 0}
   <h1 class="text-3xl font-bold">
     Er zijn {data.newTracks.length} nieuwe tracks geüpload door artiesten
   </h1>
@@ -179,5 +179,5 @@
     {/each}
   </div>
 {:else}
-  <p>Er zijn geen nieuwe nummers geüpload door artiesten.</p>
+  <p class="mt-8">Er zijn geen nieuwe nummers geüpload door artiesten. Kom later terug.</p>
 {/if}
