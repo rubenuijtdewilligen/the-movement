@@ -40,6 +40,7 @@
 
           {#if data.user?.role === 'admin'}
             <div class="divider my-1">Admin</div>
+            <li><a href="/admin/mass-upload">Massa upload</a></li>
             <li><a href="/admin/new-tracks">Nieuwe tracks</a></li>
             <li><a href="/admin/tracks">Bestaande tracks</a></li>
             <li><a href="/admin/artists">Artiesten</a></li>
