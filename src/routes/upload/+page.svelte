@@ -69,6 +69,7 @@
       type="file"
       name="file"
       class="file-input file-input-bordered w-full"
+      accept="audio/*"
       required
       on:change={(e) => (file = e.target.files[0])}
       disabled={loading}
