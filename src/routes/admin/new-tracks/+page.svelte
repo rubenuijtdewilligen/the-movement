@@ -75,7 +75,7 @@
 
 {#if data.newTracks.length > 0}
   <h1 class="text-3xl font-bold">
-    Er zijn {data.newTracks.length} nieuwe tracks geüpload door artiesten
+    There are {data.newTracks.length} new tracks uploaded by artists
   </h1>
 
   <div class="space-y-2 mt-6">
@@ -85,18 +85,18 @@
         <div class="collapse-title font-semibold">{track.title}</div>
         <div class="collapse-content text-sm">
           <div class="mb-4">
-            <p><span class="font-semibold">Artiest:</span> {track.artistName}</p>
+            <p><span class="font-semibold">Artist:</span> {track.artistName}</p>
             <p>
-              <span class="font-semibold">Geüpload op:</span>
+              <span class="font-semibold">Uploaded on:</span>
               {new Date(track.created)
-                .toLocaleString('nl-NL', {
+                .toLocaleString('en-US', {
                   year: 'numeric',
                   month: 'numeric',
                   day: 'numeric',
                   hour: '2-digit',
                   minute: '2-digit'
                 })
-                .replace(', ', ' om ')}
+                .replace(', ', ' at ')}
             </p>
           </div>
 
@@ -110,7 +110,7 @@
             style="display: block;"
           ></button>
           <p class="text-xs text-gray-500 mt-1">
-            Klik op de waveform om te kiezen waar je luistert. Druk op spatie voor start/pauze.
+            Click on the waveform to choose where you listen. Press space to start/pause.
           </p>
 
           <div class="mt-4 flex flex-row gap-2">
@@ -118,15 +118,15 @@
               class="btn btn-success text-white"
               on:click={() => document.getElementById(`accept-${track.id}`).showModal()}
             >
-              Accepteren
+              Accept
             </button>
 
             <dialog id={`accept-${track.id}`} class="modal">
               <div class="modal-box">
-                <h3 class="text-lg font-bold">Track accepteren: {track.title}</h3>
+                <h3 class="text-lg font-bold">Accept track: {track.title}</h3>
 
                 <p class="mt-2 -mb-2">
-                  De artiest geeft de voorkeur aan release in de maand {track.preferredReleaseMonth}.
+                  The artist prefers a release in the month {track.preferredReleaseMonth}.
                 </p>
 
                 <form
@@ -138,23 +138,23 @@
                   <input type="hidden" name="trackId" value={track.id} />
 
                   <label for="releaseMonth" class="block mt-4 mb-1 font-medium">
-                    Release maand
+                    Release month
                   </label>
                   <input
                     type="text"
                     name="releaseMonth"
                     class="input input-bordered w-full"
-                    placeholder="Release maand (yyyy-mm, bijvoorbeeld: 2025-08)"
+                    placeholder="Release month (yyyy-mm, e.g.: 2025-08)"
                     value={track.preferredReleaseMonth}
                     required
                   />
 
-                  <button type="submit" class="btn btn-success text-white -mt-2">Accepteren</button>
+                  <button type="submit" class="btn btn-success text-white -mt-2">Accept</button>
                 </form>
 
                 <div class="modal-action">
                   <form method="dialog">
-                    <button class="btn btn-error text-white">Sluiten</button>
+                    <button class="btn btn-error text-white">Close</button>
                   </form>
                 </div>
               </div>
@@ -162,7 +162,7 @@
 
             <form action="?/denyTrack" method="post">
               <input type="hidden" name="trackId" value={track.id} />
-              <button type="submit" class="btn btn-error text-white">Afwijzen</button>
+              <button type="submit" class="btn btn-error text-white">Deny</button>
             </form>
           </div>
         </div>
@@ -170,5 +170,5 @@
     {/each}
   </div>
 {:else}
-  <p class="mt-8">Er zijn geen nieuwe tracks geüpload door artiesten. Kom later terug.</p>
+  <p class="mt-8">There are no new tracks uploaded by artists. Please check back later.</p>
 {/if}

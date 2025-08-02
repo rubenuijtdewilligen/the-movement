@@ -26,10 +26,10 @@
         case 'success':
           await invalidateAll();
           formElement.reset();
-          toast.success('Activatielink aan de tabel toegevoegd.', { duration: 5000 });
+          toast.success('Added activation link to the table.', { duration: 5000 });
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.', { duration: 5000 });
+          toast.error('Something went wrong.', { duration: 5000 });
           break;
         default:
           await applyAction(result);
@@ -45,10 +45,10 @@
         case 'success':
           await invalidateAll();
           formElement.reset();
-          toast.success('Uitnodiging ingetrokken.', { duration: 5000 });
+          toast.success('Invitation withdrawn.', { duration: 5000 });
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.', { duration: 5000 });
+          toast.error('Something went wrong.', { duration: 5000 });
           break;
         default:
           await applyAction(result);
@@ -59,8 +59,8 @@
 </script>
 
 <div class="max-w-2xl space-y-6">
-  <a href="/admin/artists" class="link link-primary">⬅️ Terug naar alle artiesten</a>
-  <h1 class="text-3xl font-bold">Nieuwe artiest uitnodigen</h1>
+  <a href="/admin/artists" class="link link-primary">⬅️ Back to artist overview</a>
+  <h1 class="text-3xl font-bold">Invite new artist</h1>
 
   <form
     method="POST"
@@ -72,33 +72,32 @@
     <input
       class="input input-bordered w-full"
       name="stageName"
-      placeholder="Artiestennaam"
+      placeholder="Stage name"
       required
       disabled={loading}
     />
 
     <button class="btn btn-primary w-full" type="submit" disabled={loading}>
-      Activatielink maken
+      Create activation link
     </button>
   </form>
 </div>
 
 {#if data.invites.length > 0}
-  <h1 class="text-xl font-bold mt-4 mb-2">Uitgenodigde artiesten</h1>
+  <h1 class="text-xl font-bold mt-4 mb-2">Invited artists</h1>
 
   <p>
-    Artiesten die uitgenodigd zijn om deel te nemen aan het platform, maar nog geen account hebben
-    aangemaakt.
-    <br />Je kan hun activatielink hier kopiëren om te delen (rechtermuisklik > linkadres kopiëren).
+    Artists who have been invited to join the platform but have not yet created an account.
+    <br />You can copy their activation link here to share (right-click > copy link address).
   </p>
 
   <div class="overflow-x-auto">
     <table class="table">
       <thead class="text-l">
         <tr>
-          <th>Artiestennaam</th>
-          <th>Activatielink</th>
-          <th>Acties</th>
+          <th>Stage name</th>
+          <th>Activation link</th>
+          <th>Actions</th>
         </tr>
       </thead>
 
@@ -115,7 +114,7 @@
               <form action="?/deleteInvite" method="POST" use:enhance={submitDeleteInvite}>
                 <input type="hidden" name="id" value={artist.id} />
                 <button type="submit" class="btn btn-error text-white btn-sm">
-                  Uitnodiging intrekken
+                  Withdraw invitation
                 </button>
               </form>
             </td>

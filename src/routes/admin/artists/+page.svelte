@@ -15,10 +15,10 @@
         case 'success':
           await invalidateAll();
           formElement.reset();
-          toast.success('Uitnodiging ingetrokken.', { duration: 5000 });
+          toast.success('Invitation withdrawn.', { duration: 5000 });
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.', { duration: 5000 });
+          toast.error('Something went wrong.', { duration: 5000 });
           break;
         default:
           await applyAction(result);
@@ -28,24 +28,24 @@
   };
 </script>
 
-<a href="/admin/artists/invite" class="btn btn-primary btn-lg mb-4">Nieuwe artiest uitnodigen</a>
+<a href="/admin/artists/invite" class="btn btn-primary btn-lg mb-4">Invite new artist</a>
 
-<h1 class="text-3xl font-bold mb-2">Artiesten met account</h1>
+<h1 class="text-3xl font-bold mb-2">Artists with an account</h1>
 
 <p class="mb-4">
-  Artiesten waarvan door een admin handmatig de naam aan een track toegevoegd is, staan hier niet
-  bij, omdat zij geen account hebben. <br /> Ook wanneer een artiest later een account gekregen heeft,
-  tellen tracks van voordat de artiest een account had niet mee in "Tracks geüpload".
+  Artists who have been manually added to a track by an admin are not listed here, because they do
+  not have an account. <br /> Also, when an artist later gets an account, tracks from before the artist
+  had an account do not count towards "Tracks uploaded".
 </p>
 
 <div class="overflow-x-auto">
   <table class="table">
     <thead class="text-l">
       <tr>
-        <th>Artiestennaam</th>
-        <th>Naam</th>
-        <th>Tracks geüpload</th>
-        <th>Acties</th>
+        <th>Stage name</th>
+        <th>Name</th>
+        <th>Tracks uploaded</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -58,7 +58,7 @@
           <td>{artist.fullName}</td>
           <td>{artist.amountOfTracks}</td>
           <td class="flex flex-row">
-            <a class="btn btn-primary btn-sm" href="/admin/artists/{artist.id}"> Openen </a>
+            <a class="btn btn-primary btn-sm" href="/admin/artists/{artist.id}"> Open </a>
           </td>
         </tr>
       {/each}
@@ -66,22 +66,21 @@
   </table>
 </div>
 
-<h1 class="text-xl font-bold mt-4 mb-2">Uitgenodigde artiesten</h1>
+<h1 class="text-xl font-bold mt-4 mb-2">Invited artists</h1>
 
 {#if data.invites.length > 0}
   <p>
-    Artiesten die uitgenodigd zijn om deel te nemen aan het platform, maar nog geen account hebben
-    aangemaakt.
-    <br />Je kan hun activatielink hier kopiëren om te delen (rechtermuisklik > linkadres kopiëren).
+    Artists who have been invited to join the platform but have not yet created an account.
+    <br />You can copy their activation link here to share (right-click > copy link address).
   </p>
 
   <div class="overflow-x-auto mb-10">
     <table class="table">
       <thead class="text-l">
         <tr>
-          <th>Artiestennaam</th>
-          <th>Activatielink</th>
-          <th>Acties</th>
+          <th>Stage name</th>
+          <th>Activation link</th>
+          <th>Actions</th>
         </tr>
       </thead>
 
@@ -98,7 +97,7 @@
               <form action="?/deleteInvite" method="POST" use:enhance={submitDeleteInvite}>
                 <input type="hidden" name="id" value={artist.id} />
                 <button type="submit" class="btn btn-error text-white btn-sm">
-                  Uitnodiging intrekken
+                  Withdraw invitation
                 </button>
               </form>
             </td>
@@ -109,7 +108,7 @@
   </div>
 {:else}
   <p>
-    Er zijn momenteel geen artiesten die wel uitgenodigd zijn om deel te nemen aan het platform,
-    maar nog geen account gemaakt hebben.
+    There are currently no artists who have been invited to join the platform but have not yet
+    created an account.
   </p>
 {/if}

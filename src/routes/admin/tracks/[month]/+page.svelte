@@ -57,10 +57,10 @@
         case 'success':
           await invalidateAll();
           formElement.reset();
-          toast.success('Track verplaatst.');
+          toast.success('Track moved.');
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.');
+          toast.error('Something went wrong.');
           break;
         default:
           await applyAction(result);
@@ -79,10 +79,10 @@
         case 'success':
           await invalidateAll();
           formElement.reset();
-          toast.success('Track verwijderd.');
+          toast.success('Track deleted.');
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.');
+          toast.error('Something went wrong.');
           break;
         default:
           await applyAction(result);
@@ -94,8 +94,8 @@
   };
 </script>
 
-<a href="/admin/tracks" class="link link-primary">⬅️ Terug naar overzicht</a>
-<h1 class="text-3xl font-bold my-3">Tracks van {getMonthName(data.month)}</h1>
+<a href="/admin/tracks" class="link link-primary">⬅️ Back to overview</a>
+<h1 class="text-3xl font-bold my-3">Tracks of {getMonthName(data.month)}</h1>
 
 {#if data.tracksGroupedByArtist.length > 0}
   {#each data.tracksGroupedByArtist as artist}
@@ -130,15 +130,15 @@
               class="btn btn-secondary text-white w-full"
               on:click={() => document.getElementById(`move-${track.id}`).showModal()}
             >
-              Verplaatsen
+              Move
             </div>
 
             <dialog id={`move-${track.id}`} class="modal">
               <div class="modal-box">
-                <h3 class="text-lg font-bold">Track verplaatsen: {track.title}</h3>
+                <h3 class="text-lg font-bold">Move track: {track.title}</h3>
 
                 <p class="mt-2 -mb-2">
-                  De artiest geeft de voorkeur aan release in de maand {track.preferredReleaseMonth}.
+                  The artist prefers a release in the month {track.preferredReleaseMonth}.
                 </p>
 
                 <form
@@ -150,7 +150,7 @@
                   <input type="hidden" name="trackId" value={track.id} />
 
                   <label for="releaseMonth" class="block mt-4 mb-1 font-medium">
-                    Naar welke maand wil je deze track verplaatsen?
+                    Which month do you want to move this track to?
                   </label>
                   <input
                     type="text"
@@ -160,13 +160,12 @@
                     required
                   />
 
-                  <button type="submit" class="btn btn-primary text-white -mt-2">Verplaatsen</button
-                  >
+                  <button type="submit" class="btn btn-primary text-white -mt-2">Move</button>
                 </form>
 
                 <div class="modal-action">
                   <form method="dialog">
-                    <button class="btn btn-error text-white">Sluiten</button>
+                    <button class="btn btn-error text-white">Close</button>
                   </form>
                 </div>
               </div>
@@ -177,16 +176,16 @@
               class="btn btn-error text-white w-full"
               on:click={() => document.getElementById(`delete-${track.id}`).showModal()}
             >
-              Verwijderen
+              Delete
             </div>
 
             <dialog id={`delete-${track.id}`} class="modal">
               <div class="modal-box">
-                <h3 class="text-lg font-bold">Track verwijderen: {track.title}</h3>
+                <h3 class="text-lg font-bold">Delete track: {track.title}</h3>
 
-                <p class="mt-2">Weet je zeker dat je deze track wilt verwijderen?</p>
+                <p class="mt-2">Are you sure you want to delete this track?</p>
                 <p class="mb-4">
-                  <b>Dit kan niet ongedaan gemaakt worden!</b>
+                  <b>This cannot be undone!</b>
                 </p>
 
                 <form
@@ -198,13 +197,13 @@
                   <input type="hidden" name="trackId" value={track.id} />
 
                   <button type="submit" class="btn btn-error text-white">
-                    Ja, ik wil deze track verwijderen
+                    Yes, I want to delete this track
                   </button>
                 </form>
 
                 <div class="modal-action">
                   <form method="dialog">
-                    <button class="btn btn-secondary text-white">Nee, annuleren!</button>
+                    <button class="btn btn-secondary text-white">No, cancel!</button>
                   </form>
                 </div>
               </div>
@@ -214,7 +213,7 @@
               class="btn btn-primary whitespace-nowrap w-full"
               href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}`}
             >
-              Downloaden
+              Download
             </a>
           </div>
         </div>
@@ -222,8 +221,5 @@
     </div>
   {/each}
 {:else}
-  <p class="mt-2">Geen tracks in deze maand.</p>
+  <p class="mt-2">No tracks in this month.</p>
 {/if}
-
-<style>
-</style>

@@ -19,8 +19,7 @@ export const isCurrentMonth = (month) => {
 export const getMonthName = (month) => {
   const date = new Date(`${month}-01`);
 
-  // Format the date to Dutch month name and year
-  const formatter = new Intl.DateTimeFormat('nl-NL', {
+  const formatter = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Europe/Amsterdam',
     month: 'long',
     year: 'numeric'

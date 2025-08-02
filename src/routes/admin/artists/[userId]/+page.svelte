@@ -36,7 +36,7 @@
             hour: '2-digit',
             minute: '2-digit'
           })
-          .replace(', ', ' om ')}
+          .replace(', ', ' at ')}
       </p>
       <p><span class="font-bold">Tracks geüpload:</span> {data.tracks.length}</p>
     </div>

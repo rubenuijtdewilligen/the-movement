@@ -18,7 +18,7 @@
   <div class="flex gap-2">
     {#if !data.user}
       {#if !(currentPath === '/login' || currentPath.startsWith('/invite'))}
-        <a href="/login" class="link">Inloggen als artiest</a>
+        <a href="/login" class="link">Login as Artist</a>
       {/if}
     {:else}
       <div class="dropdown dropdown-end">
@@ -33,25 +33,25 @@
           </div>
         </div>
         <ul class="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-          <div class="divider mt-0 mb-1">Artiest</div>
+          <div class="divider mt-0 mb-1">Artist</div>
           <li>
-            <a href="/upload"> Track uploaden </a>
+            <a href="/upload"> Upload Track </a>
           </li>
 
           {#if data.user?.role === 'admin'}
             <div class="divider my-1">Admin</div>
-            <li><a href="/admin/mass-upload">Massa upload</a></li>
-            <li><a href="/admin/new-tracks">Nieuwe tracks</a></li>
-            <li><a href="/admin/tracks">Bestaande tracks</a></li>
-            <li><a href="/admin/artists">Artiesten</a></li>
+            <li><a href="/admin/mass-upload">Mass Upload</a></li>
+            <li><a href="/admin/new-tracks">New Tracks</a></li>
+            <li><a href="/admin/tracks">Existing Tracks</a></li>
+            <li><a href="/admin/artists">Artists</a></li>
           {/if}
 
           <div class="divider mt-0 mb-1">Account</div>
 
-          <li><a href="/settings"> Instellingen </a></li>
+          <li><a href="/settings"> Settings </a></li>
           <li>
             <form action="/logout" method="POST">
-              <button class="hover:cursor-pointer"> Uitloggen </button>
+              <button class="hover:cursor-pointer"> Logout </button>
             </form>
           </li>
         </ul>

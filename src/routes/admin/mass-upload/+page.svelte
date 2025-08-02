@@ -22,7 +22,7 @@
     const uploadStatus = Array.from(files).map((file) => ({
       name: file.name,
       progress: 0,
-      status: file.size > maxSize ? 'Te groot, maximaal 50MB' : 'Bezig...'
+      status: file.size > maxSize ? 'Too large, maximum 50MB' : 'Uploading...'
     }));
 
     uploads.set(uploadStatus);
@@ -80,7 +80,7 @@
       xhr.onload = () => {
         if (xhr.status === 200 || xhr.status === 204) {
           uploads.update((list) => {
-            list[index].status = 'Klaar';
+            list[index].status = 'Done';
             list[index].progress = 100;
             return [...list];
           });
@@ -98,16 +98,16 @@
 
 {#if $uploads.length < 1}
   <div class="max-w-2xl space-y-3">
-    <h1 class="text-3xl font-bold">Massa upload</h1>
+    <h1 class="text-3xl font-bold">Mass Upload</h1>
 
     <p>
-      Met deze tool kan je veel tracks van een artiest in 1x uploaden. Geef van te voren aan wie de
-      artiest is en in welke maand de track gereleased moet worden. De tracks worden automatisch
-      geaccepteerd.
+      Using this tool, you can upload multiple tracks from an artist at once. Specify in advance who
+      the artist is and in which month the track should be released. The tracks will be
+      automatically accepted.
     </p>
 
     <div class="mb-4 p-4 bg-base-200 rounded">
-      <label for="artist-select" class="block mb-1 font-medium">Selecteer artiest:</label>
+      <label for="artist-select" class="block mb-1 font-medium">Select artist:</label>
       <select
         id="artist-select"
         name="artistId"
@@ -121,7 +121,7 @@
       </select>
 
       <label for="artistName" class="block mt-4 mb-1 font-medium">
-        of voer hier de naam van een artiest zonder account in:
+        or enter the name of an artist without an account:
       </label>
       <input
         type="text"
@@ -133,17 +133,17 @@
     </div>
 
     <fieldset class="fieldset">
-      <legend class="fieldset-legend">Release maand (yyyy-mm, bijvoorbeeld: 2025-08)</legend><input
+      <legend class="fieldset-legend">Release month (yyyy-mm, e.g.: 2025-08)</legend><input
         class="input input-bordered w-full"
         name="releaseMonth"
         bind:value={releaseMonth}
-        placeholder="Release maand (yyyy-mm, bijvoorbeeld: 2025-08)"
+        placeholder="Release month (yyyy-mm, e.g.: 2025-08)"
         required
       />
     </fieldset>
 
     <fieldset class="fieldset">
-      <legend class="fieldset-legend">Kies je bestanden</legend>
+      <legend class="fieldset-legend">Choose your files</legend>
       <input
         class="file-input w-full"
         type="file"
@@ -154,17 +154,19 @@
       />
     </fieldset>
 
-    <button on:click={uploadFiles} class="btn btn-primary w-full">Uploaden</button>
+    <button on:click={uploadFiles} class="btn btn-primary w-full">Upload</button>
   </div>
 {/if}
 
 {#if $uploads.length > 0}
-  <h1 class="text-3xl font-bold">Massa upload</h1>
+  <h1 class="text-3xl font-bold">Mass Upload</h1>
 
   <p class="my-4">
-    Je bent {files.length} tracks aan het uploaden voor {artistId
+    You are uploading {files.length} tracks for {artistId
       ? data.artists.find((u) => u.id === artistId).stageName
-      : artistName || 'onbekende artiest'}. Deze worden gereleased in {getMonthName(releaseMonth)}.
+      : artistName || 'unknown artist'}. The tracks will be released in {getMonthName(
+      releaseMonth
+    )}.
   </p>
 
   <div class="overflow-x-auto mb-2">
@@ -172,8 +174,8 @@
       <thead>
         <tr>
           <th></th>
-          <th>Bestandsnaam</th>
-          <th>Voortgang</th>
+          <th>File Name</th>
+          <th>Progress</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -194,7 +196,7 @@
     </table>
   </div>
 
-  {#if $uploads.every((upload) => upload.status === 'Klaar' || upload.status === 'Te groot, maximaal 50MB')}
+  {#if $uploads.every((upload) => upload.status === 'Done' || upload.status === 'Too large, maximum 50MB')}
     <button
       class="btn btn-primary btn-lg mt-2 mb-8"
       on:click={() => {
@@ -202,7 +204,7 @@
         location.reload();
       }}
     >
-      Nieuwe mass upload
+      New mass upload
     </button>
   {/if}
 {/if}

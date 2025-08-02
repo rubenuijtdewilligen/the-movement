@@ -7,16 +7,16 @@
 
   let years = [];
   let months = [
-    { name: 'januari', value: '01' },
-    { name: 'februari', value: '02' },
-    { name: 'maart', value: '03' },
+    { name: 'january', value: '01' },
+    { name: 'february', value: '02' },
+    { name: 'march', value: '03' },
     { name: 'april', value: '04' },
-    { name: 'mei', value: '05' },
-    { name: 'juni', value: '06' },
-    { name: 'juli', value: '07' },
-    { name: 'augustus', value: '08' },
+    { name: 'may', value: '05' },
+    { name: 'june', value: '06' },
+    { name: 'july', value: '07' },
+    { name: 'august', value: '08' },
     { name: 'september', value: '09' },
-    { name: 'oktober', value: '10' },
+    { name: 'october', value: '10' },
     { name: 'november', value: '11' },
     { name: 'december', value: '12' }
   ];
@@ -33,14 +33,14 @@
   let searchQuery = '';
 </script>
 
-<h1 class="text-3xl font-bold my-3">Tracks beheren</h1>
+<h1 class="text-3xl font-bold my-3">Manage tracks</h1>
 
-<h1 class="text-xl font-bold my-3">Specifieke maand openen</h1>
+<h1 class="text-xl font-bold my-3">Open specific month</h1>
 
 <div class="flex gap-2 items-center">
   <label>
     <select bind:value={selectedMonth} class="select">
-      <option value="" disabled selected>Kies maand</option>
+      <option value="" disabled selected>Select month</option>
       {#each months as month}
         <option value={month.value}>{month.name}</option>
       {/each}
@@ -55,10 +55,10 @@
     </select>
   </label>
 
-  <a href={`/admin/tracks/${selectedDate}`} class="btn btn-primary">Openen</a>
+  <a href={`/admin/tracks/${selectedDate}`} class="btn btn-primary">Open</a>
 </div>
 
-<h1 class="text-xl font-bold my-3">Zoek op titel of artiest</h1>
+<h1 class="text-xl font-bold my-3">Search by title or artist</h1>
 
 <form
   on:submit|preventDefault={() => {
@@ -68,9 +68,9 @@
 >
   <input
     type="text"
-    placeholder="Zoek op titel of artiest"
+    placeholder="Search by title or artist"
     class="input input-bordered w-full max-w-xs"
     bind:value={searchQuery}
   />
-  <button type="submit" class="btn btn-primary">Zoeken</button>
+  <button type="submit" class="btn btn-primary">Search</button>
 </form>

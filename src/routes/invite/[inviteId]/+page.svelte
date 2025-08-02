@@ -27,10 +27,10 @@
       switch (result.type) {
         case 'success':
           await invalidateAll();
-          toast.success('Account aangemaakt, welkom bij The Movement!', { duration: 5000 });
+          toast.success('Account created, welcome to The Movement!', { duration: 5000 });
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.', { duration: 5000 });
+          toast.error('Something went wrong.', { duration: 5000 });
           break;
         default:
           await applyAction(result);
@@ -41,11 +41,10 @@
 </script>
 
 <div class="flex flex-col items-center">
-  <h1 class="text-3xl font-bold">Welkom bij The Movement, {data.info.stageName}!</h1>
+  <h1 class="text-3xl font-bold">Welcome to The Movement, {data.info.stageName}!</h1>
 
   <p class="mt-2 mb-4">
-    Je bent uitgenodigd om je account aan te maken. Vul het onderstaande formulier in om te
-    beginnen.
+    You have been invited to create your account. Please fill out the form below to get started.
   </p>
 
   <form
@@ -59,8 +58,8 @@
     <input type="hidden" name="stageName" value={data.info.stageName} />
 
     <div class="form-control w-full">
-      <label for="email" class="label pb-1 font-medium">
-        <span class="label-text">Artiestennaam</span>
+      <label for="stageNameFake" class="label pb-1 font-medium">
+        <span class="label-text">Stage name</span>
       </label>
       <input
         class="input input-bordered w-full"
@@ -73,14 +72,14 @@
 
     <div class="form-control w-full">
       <label for="email" class="label pb-1 font-medium">
-        <span class="label-text">Volledige naam</span>
+        <span class="label-text">Full name</span>
       </label>
       <input class="input input-bordered w-full" name="fullName" required disabled={loading} />
     </div>
 
     <div class="form-control w-full">
       <label for="email" class="label pb-1 font-medium">
-        <span class="label-text">Profielfoto (png/jpg)</span>
+        <span class="label-text">Profile photo (png/jpg)</span>
       </label>
       <input
         type="file"
@@ -94,20 +93,20 @@
 
     <div class="form-control w-full">
       <label for="email" class="label pb-1 font-medium">
-        <span class="label-text">E-mailadres</span>
+        <span class="label-text">Email address</span>
       </label>
       <input
         type="email"
         name="email"
         class="input input-bordered w-full"
-        placeholder="naam@voorbeeld.nl"
+        placeholder="name@example.nl"
         required
       />
     </div>
 
     <div class="form-control w-full">
       <label for="email" class="label pb-1 font-medium">
-        <span class="label-text">Wachtwoord</span>
+        <span class="label-text">Password</span>
       </label>
       <input
         class="input input-bordered w-full"
@@ -120,7 +119,7 @@
 
     <div class="form-control w-full">
       <label for="email" class="label pb-1 font-medium">
-        <span class="label-text">Wachtwoord bevestigen</span>
+        <span class="label-text">Confirm password</span>
       </label>
       <input
         class="input input-bordered w-full"
@@ -132,7 +131,7 @@
     </div>
 
     <button class="btn btn-primary w-full mt-2" type="submit" disabled={loading}>
-      Account aanmaken
+      Create account
     </button>
   </form>
 </div>

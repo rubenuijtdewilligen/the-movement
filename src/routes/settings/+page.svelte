@@ -27,10 +27,10 @@
       switch (result.type) {
         case 'success':
           await invalidateAll();
-          toast.success('Instellingen opgeslagen.', { duration: 5000 });
+          toast.success('Settings saved.', { duration: 5000 });
           break;
         case 'error':
-          toast.error('Er is iets misgegaan.', { duration: 5000 });
+          toast.error('Something went wrong.', { duration: 5000 });
           break;
         default:
           await applyAction(result);
@@ -41,7 +41,7 @@
 </script>
 
 <div class="max-w-2xl space-y-6">
-  <h1 class="text-3xl font-bold">Profiel instellingen</h1>
+  <h1 class="text-3xl font-bold">Profile settings</h1>
 
   <form
     method="POST"
@@ -53,17 +53,17 @@
     <input type="hidden" name="id" value={data.user.id} />
 
     <label for="fullName" class="input input-bordered w-full">
-      <span class="label">Naam</span>
+      <span class="label">Name</span>
       <input name="fullName" value={data.user.fullName || ''} required disabled={loading} />
     </label>
 
     <label for="stageName" class="input input-bordered w-full">
-      <span class="label">Artiestennaam</span>
+      <span class="label">Stage name</span>
       <input name="stageName" value={data.user.stageName || ''} required disabled={loading} />
     </label>
 
     <div class="form-control w-full max-w-lg flex flex-col">
-      <span class="text-black font-semibold mb-3">Profielfoto (klik erop om te bewerken)</span>
+      <span class="text-black font-semibold mb-3">Profile photo (click to edit)</span>
       <label for="avatar" class="avatar hover:cursor-pointer">
         <div class="w-64 rounded-full">
           <img
@@ -86,8 +86,6 @@
       />
     </div>
 
-    <button class="btn btn-primary w-full" type="submit" disabled={loading}>
-      Wijzigingen opslaan
-    </button>
+    <button class="btn btn-primary w-full" type="submit" disabled={loading}> Save changes </button>
   </form>
 </div>

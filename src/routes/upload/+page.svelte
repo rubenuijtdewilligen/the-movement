@@ -41,7 +41,7 @@
 </script>
 
 <div class="max-w-2xl space-y-6">
-  <h1 class="text-3xl font-bold">Nieuwe track uploaden</h1>
+  <h1 class="text-3xl font-bold">Upload new Track</h1>
 
   <form
     method="POST"
@@ -53,14 +53,14 @@
     <input
       class="input input-bordered w-full"
       name="title"
-      placeholder="Titel"
+      placeholder="Title"
       required
       disabled={loading}
     />
     <input
       class="input input-bordered w-full"
       name="preferredReleaseMonth"
-      placeholder="Voorkeur release maand (yyyy-mm, bijvoorbeeld: 2025-08)"
+      placeholder="Preferred release month (yyyy-mm, e.g.: 2025-08)"
       required
       disabled={loading}
     />
@@ -84,12 +84,14 @@
             class="toggle"
             on:change={handleToggle}
           />
-          <span>Je bent ingelogd als admin, wil je deze track namens iemand anders uploaden?</span>
+          <span
+            >You are logged in as admin, do you want to upload this track on behalf of someone else?</span
+          >
         </label>
 
         {#if uploadAsOther}
           <div class="mt-4">
-            <label for="artist-select" class="block mb-1 font-medium">Selecteer artiest:</label>
+            <label for="artist-select" class="block mb-1 font-medium">Select artist:</label>
             <select
               id="artist-select"
               bind:value={selectedArtist}
@@ -103,13 +105,13 @@
             </select>
 
             <label for="artistWithoutAccount" class="block mt-4 mb-1 font-medium">
-              of voer hier de naam van een artiest zonder account in:
+              or enter the name of an artist without an account:
             </label>
             <input
               type="text"
               name="artistWithoutAccount"
               class="input input-bordered w-full"
-              placeholder="Naam van artiest zonder account"
+              placeholder="Name of artist without account"
               disabled={loading}
             />
           </div>
@@ -119,6 +121,6 @@
 
     <input type="hidden" name="artist" value={selectedArtist} />
 
-    <button class="btn btn-primary w-full" type="submit" disabled={loading}> Uploaden </button>
+    <button class="btn btn-primary w-full" type="submit" disabled={loading}> Upload </button>
   </form>
 </div>

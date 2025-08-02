@@ -64,7 +64,7 @@
     });
 
     if (!response.ok) {
-      alert('Fout bij het maken van de zip.');
+      alert('Error while creating zip.');
       isDownloading = false;
       return;
     }
@@ -112,9 +112,9 @@
     disabled={isDownloading}
   >
     {#if isDownloading}
-      Downloaden...
+      Downloading...
     {:else}
-      Download alle tracks
+      Download all tracks
     {/if}
   </button>
 </div>
@@ -124,9 +124,7 @@
 {/if}
 
 {#if data.tracksGroupedByArtist.length > 0}
-  <p class="my-2 hidden md:flex">
-    Beweeg je muis over een titel om deze te lezen als hij deels wegvalt.
-  </p>
+  <p class="my-2 hidden md:flex">Move your mouse over a title to read it if it gets cut off.</p>
 
   {#each data.tracksGroupedByArtist as artist}
     <div class="border-base-300 bg-base-200 rounded-sm p-4 mb-4">
@@ -156,14 +154,14 @@
             class="btn btn-primary whitespace-nowrap w-full"
             href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}`}
           >
-            Downloaden
+            Download
           </a>
         </button>
       {/each}
     </div>
   {/each}
 {:else}
-  <p class="mt-2">Er zijn deze maand nog geen tracks uitgekomen. Houd je inbox in de gaten!</p>
+  <p class="mt-2">No tracks have been released this month. Keep an eye on your inbox!</p>
 {/if}
 
 <style>
