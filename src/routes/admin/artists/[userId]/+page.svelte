@@ -1,13 +1,7 @@
 <script>
-  import { enhance, applyAction } from '$app/forms';
-  import { invalidateAll } from '$app/navigation';
   import { getFileURL } from '$lib/util.js';
-  import toast from 'svelte-french-toast';
 
   export let data;
-
-  let loading;
-  $: loading = false;
 </script>
 
 <div class="space-y-6">
@@ -70,15 +64,10 @@
           <b>Dit kan niet ongedaan gemaakt worden!</b>
         </p>
 
-        <form
-          action="?/deleteArtist"
-          method="post"
-          class="space-y-4"
-          use:enhance={submitDeleteArtist}
-        >
+        <form action="?/deleteArtist" method="post" class="space-y-4">
           <input type="hidden" name="userId" value={data.artist.id} />
 
-          <button type="submit" class="btn btn-error text-white" disabled={loading}>
+          <button type="submit" class="btn btn-error text-white">
             Ja, ik wil het account van {data.artist.stageName} verwijderen
           </button>
         </form>
