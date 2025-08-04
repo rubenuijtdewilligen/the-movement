@@ -805,6 +805,76 @@
     "system": true
   },
   {
+    "id": "pbc_206290961",
+    "listRule": "@request.auth.role = 'admin' || @request.auth.role = 'artist'",
+    "viewRule": "@request.auth.role = 'admin' || @request.auth.role = 'artist'",
+    "createRule": "",
+    "updateRule": null,
+    "deleteRule": null,
+    "name": "download_logs",
+    "type": "base",
+    "fields": [
+      {
+        "autogeneratePattern": "[a-z0-9]{15}",
+        "hidden": false,
+        "id": "text3208210256",
+        "max": 15,
+        "min": 15,
+        "name": "id",
+        "pattern": "^[a-z0-9]+$",
+        "presentable": false,
+        "primaryKey": true,
+        "required": true,
+        "system": true,
+        "type": "text"
+      },
+      {
+        "cascadeDelete": false,
+        "collectionId": "pbc_327047008",
+        "hidden": false,
+        "id": "relation3605264550",
+        "maxSelect": 1,
+        "minSelect": 0,
+        "name": "track",
+        "presentable": false,
+        "required": false,
+        "system": false,
+        "type": "relation"
+      },
+      {
+        "hidden": false,
+        "id": "bool1329470488",
+        "name": "singleDownload",
+        "presentable": false,
+        "required": false,
+        "system": false,
+        "type": "bool"
+      },
+      {
+        "hidden": false,
+        "id": "autodate2990389176",
+        "name": "created",
+        "onCreate": true,
+        "onUpdate": false,
+        "presentable": false,
+        "system": false,
+        "type": "autodate"
+      },
+      {
+        "hidden": false,
+        "id": "autodate3332085495",
+        "name": "updated",
+        "onCreate": true,
+        "onUpdate": true,
+        "presentable": false,
+        "system": false,
+        "type": "autodate"
+      }
+    ],
+    "indexes": [],
+    "system": false
+  },
+  {
     "id": "pbc_2452428166",
     "listRule": "@request.auth.role = 'admin'",
     "viewRule": "",

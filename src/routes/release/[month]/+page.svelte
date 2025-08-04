@@ -54,7 +54,8 @@
 
     const tracks = data.tracks.map((track) => ({
       url: getFileURL(track.collectionId, track.id, track.file),
-      title: track.title
+      title: track.title,
+      id: track.id
     }));
 
     const response = await fetch('/api/zip-tracks', {
@@ -152,7 +153,7 @@
 
           <a
             class="btn btn-primary whitespace-nowrap w-full"
-            href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}`}
+            href={`/api/download?url=${encodeURIComponent(getFileURL(track.collectionId, track.id, track.file))}&filename=${encodeURIComponent(`${track.title}.${track.file.split('.').pop()}`)}&id=${track.id}`}
           >
             Download
           </a>

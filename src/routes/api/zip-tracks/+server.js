@@ -1,7 +1,7 @@
 import archiver from 'archiver';
 import { Readable } from 'stream';
 
-export const POST = async ({ request }) => {
+export const POST = async ({ request, locals }) => {
   const { tracks } = await request.json();
 
   const { readable, writable } = new TransformStream();
@@ -19,6 +19,9 @@ export const POST = async ({ request }) => {
   for (const track of tracks) {
     try {
       const res = await fetch(track.url);
+
+      await locals.pb.collection('download_logs').create({ track: track.id });
+
       if (!res.ok || !res.body) {
         console.warn(`Skipping ${track.title}: could not fetch`);
         continue;
