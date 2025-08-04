@@ -1,6 +1,7 @@
 <script>
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
   import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+  import { faPlay } from '@fortawesome/free-solid-svg-icons';
   import WaveSurfer from 'wavesurfer.js';
   import { onMount, onDestroy } from 'svelte';
   import { getFileURL, getMonthName } from '$lib/util';
@@ -149,7 +150,9 @@
         </h3>
       </div>
       {#each artist.tracks as track}
-        <button
+        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div
           on:keydown={(e) => handleKeydown(e, track.id)}
           tabindex="0"
           class="bg-white p-2 rounded-sm space-y-4 mt-2 hover:bg-gray-100 transition-colors w-full"
@@ -158,7 +161,15 @@
             {track.title}
           </h3>
 
-          <div bind:this={waveformContainers[track.id]} class="h-[40px] w-full"></div>
+          <div class="flex flex-row items-center">
+            <div class="flex items-center space-x-2">
+              <button type="button" on:click={() => togglePlay(track.id)}>
+                <FontAwesomeIcon icon={faPlay} class="text-2xl text-primary mr-4" />
+              </button>
+            </div>
+
+            <div bind:this={waveformContainers[track.id]} class="h-[40px] w-full"></div>
+          </div>
 
           <a
             class="btn btn-primary whitespace-nowrap w-full"
@@ -166,7 +177,7 @@
           >
             Download
           </a>
-        </button>
+        </div>
       {/each}
     </div>
   {/each}
