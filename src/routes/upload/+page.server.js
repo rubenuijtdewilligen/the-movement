@@ -29,7 +29,7 @@ export const actions = {
         return { success: true };
       } catch (err) {
         console.error('Fout bij uploaden:', err);
-        throw error(500, 'Fout bij uploaden, is je bestand kleiner dan 50MB?');
+        throw error(500, 'Fout bij uploaden, is je bestand kleiner dan 100 MB?');
       }
     } else {
       try {
@@ -46,7 +46,7 @@ export const actions = {
         return { success: true };
       } catch (err) {
         console.error('Fout bij uploaden:', err);
-        throw error(500, 'Fout bij uploaden, is je bestand kleiner dan 50MB?');
+        throw error(500, 'Fout bij uploaden, is je bestand kleiner dan 100 MB?');
       }
     }
   }

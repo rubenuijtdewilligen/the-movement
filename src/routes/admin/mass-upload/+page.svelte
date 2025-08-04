@@ -18,11 +18,11 @@
   async function uploadFiles() {
     if (!files) return;
 
-    const maxSize = 50 * 1024 * 1024; // 50MB
+    const maxSize = 100 * 1024 * 1024; // 100MB
     const uploadStatus = Array.from(files).map((file) => ({
       name: file.name,
       progress: 0,
-      status: file.size > maxSize ? 'Too large, maximum 50MB' : 'Uploading...'
+      status: file.size > maxSize ? 'Too large, maximum 100 MB' : 'Uploading...'
     }));
 
     uploads.set(uploadStatus);
@@ -196,7 +196,7 @@
     </table>
   </div>
 
-  {#if $uploads.every((upload) => upload.status === 'Done' || upload.status === 'Too large, maximum 50MB')}
+  {#if $uploads.every((upload) => upload.status === 'Done' || upload.status === 'Too large, maximum 100 MB')}
     <button
       class="btn btn-primary btn-lg mt-2 mb-8"
       on:click={() => {
