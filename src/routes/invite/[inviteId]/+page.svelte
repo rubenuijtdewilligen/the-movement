@@ -71,10 +71,23 @@
     </div>
 
     <div class="form-control w-full">
-      <label for="email" class="label pb-1 font-medium">
+      <label for="fullName" class="label pb-1 font-medium">
         <span class="label-text">Full name</span>
       </label>
       <input class="input input-bordered w-full" name="fullName" required disabled={loading} />
+    </div>
+
+    <div class="form-control w-full">
+      <label for="instagram" class="label pb-1 font-medium">
+        <span class="label-text">Instagram URL</span>
+      </label>
+      <input
+        class="input input-bordered w-full"
+        name="instagram"
+        type="url"
+        required
+        disabled={loading}
+      />
     </div>
 
     <div class="form-control w-full">

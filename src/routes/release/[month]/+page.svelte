@@ -1,4 +1,6 @@
 <script>
+  import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+  import { faInstagram } from '@fortawesome/free-brands-svg-icons';
   import WaveSurfer from 'wavesurfer.js';
   import { onMount, onDestroy } from 'svelte';
   import { getFileURL, getMonthName } from '$lib/util';
@@ -137,7 +139,14 @@
             </div>
           </div>
         {/if}
-        <h3 class="text-2xl font-bold">{artist.artistName}</h3>
+        <h3 class="text-2xl font-bold">
+          {artist.artistName}
+          {#if artist.instagram}
+            <a href={artist.instagram} target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faInstagram} class="text-2xl link link-primary" />
+            </a>
+          {/if}
+        </h3>
       </div>
       {#each artist.tracks as track}
         <button

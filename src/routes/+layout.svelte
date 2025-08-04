@@ -1,8 +1,12 @@
 <script>
   import '../app.css';
+  import { config } from '@fortawesome/fontawesome-svg-core';
+  import '@fortawesome/fontawesome-svg-core/styles.css';
   import { getFileURL } from '$lib/util.js';
   import { page } from '$app/stores';
   import { Toaster } from 'svelte-french-toast';
+
+  config.autoAddCss = false;
 
   export let data;
 

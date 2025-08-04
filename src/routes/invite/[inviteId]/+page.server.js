@@ -24,6 +24,7 @@ export const actions = {
         passwordConfirm: formData.passwordConfirm,
         fullName: formData.fullName,
         stageName: formData.stageName,
+        instagram: formData.instagram,
         avatar: formData.avatar,
         role: 'artist',
         invite: formData.inviteId

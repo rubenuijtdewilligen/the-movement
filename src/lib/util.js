@@ -38,6 +38,7 @@ export const groupByArtistName = (tracks) => {
           artistAvatar: track.expand?.artist?.avatar
             ? getFileURL(track.expand.artist.collectionId, track.artist, track.expand.artist.avatar)
             : null,
+          instagram: track.expand?.artist?.instagram || null,
           tracks: []
         };
       }

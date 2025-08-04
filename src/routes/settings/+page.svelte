@@ -62,6 +62,17 @@
       <input name="stageName" value={data.user.stageName || ''} required disabled={loading} />
     </label>
 
+    <label for="instagram" class="input input-bordered w-full">
+      <span class="label">Instagram URL</span>
+      <input
+        name="instagram"
+        type="url"
+        value={data.user.instagram || ''}
+        required
+        disabled={loading}
+      />
+    </label>
+
     <div class="form-control w-full max-w-lg flex flex-col">
       <span class="text-black font-semibold mb-3">Profile photo (click to edit)</span>
       <label for="avatar" class="avatar hover:cursor-pointer">
